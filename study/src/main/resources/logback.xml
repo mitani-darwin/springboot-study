@@ -1,14 +1,25 @@
-<configuration debug="true"> 
+<configuration debug="true">
 
-  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"> 
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+
+      <!-- Spring関連のログを無効化 -->
+    <logger name="org.springframework" level="OFF"/>
+    <logger name="org.springframework.boot" level="OFF"/>
+    <logger name="org.springframework.web" level="OFF"/>
+    <logger name="org.springframework.context" level="OFF"/>
+    <logger name="org.springframework.beans" level="OFF"/>
+    <logger name="org.springframework.data" level="OFF"/>
+    <logger name="org.springframework.security" level="OFF"/>
+
+
     <!-- encoders are  by default assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
     <encoder>
-      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] [%-5level] %logger{36} - %msg%n</pattern>
     </encoder>
   </appender>
 
-  <root level="debug">
+  <root level="INFO">
     <appender-ref ref="STDOUT" />
   </root>
 </configuration>
